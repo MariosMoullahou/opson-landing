@@ -3,44 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Opson — Σύντομα κοντά σας</title>
-  <meta name="description" content="Opson — Η αγορά για φρέσκα, τοπικά ελληνικά προϊόντα απευθείας από τους παραγωγούς. Σύντομα κοντά σας." />
-  <meta property="og:title" content="Opson — Σύντομα κοντά σας" />
+  <title>Opson — Σύντομα κοντά σου</title>
+  <meta name="description" content="Η Opson είναι μια νέα αγορά για φρέσκα, τοπικά ελληνικά προϊόντα — απευθείας από τους παραγωγούς." />
+  <meta property="og:title" content="Opson" />
   <meta property="og:description" content="Φρέσκα, τοπικά ελληνικά προϊόντα απευθείας από τους παραγωγούς." />
   <meta property="og:type" content="website" />
-  <link rel="icon" type="image/svg+xml" href="assets/opson-mark.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/opson.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,700&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --green-dark:  #2e5e3e;
-      --green-mid:   #4a7c59;
+      --leaf:        #a7c958;
+      --leaf-pale:   #cfe88a;
+      --leaf-deep:   #5a7a30;
+      --leaf-darker: #3f5620;
+      --leaf-tint:   #f3f7e6;
       --cream:       #faf5eb;
-      --text-dark:   #2a1f14;
-      --text-mid:    #5a4030;
-      --text-light:  #8a7060;
+      --cream-dark:  #f0e6cc;
+      --text-dark:   #1a1a1a;
+      --text-mid:    #4a4a4a;
+      --text-light:  #8a8a8a;
+      --line:        rgba(20, 20, 20, .10);
+      --line-soft:   rgba(20, 20, 20, .06);
+
+      --font: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     html, body { height: 100%; }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: var(--font);
       background: var(--cream);
       color: var(--text-dark);
       -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
+    img, svg { display: block; max-width: 100%; }
+    button { font-family: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+
     main {
       flex: 1;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 2rem 1.5rem;
+      padding: 80px 28px 40px;
+      gap: 120px;
     }
 
+    /* ── Card (hero) ── */
     .card {
       width: 100%;
       max-width: 520px;
@@ -48,131 +65,1089 @@
     }
 
     .logo {
-      width: 220px;
-      max-width: 70%;
+      width: 260px;
+      max-width: 75%;
       height: auto;
-      margin: 0 auto 2.5rem;
-      display: block;
+      margin: 0 auto 56px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: .76rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--leaf-deep);
+      font-weight: 700;
+      margin-bottom: 22px;
     }
 
     h1 {
-      font-size: clamp(1.75rem, 5vw, 2.5rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-      color: var(--green-dark);
+      font-weight: 800;
+      font-size: clamp(2.2rem, 5.4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      color: var(--text-dark);
+      margin-bottom: 20px;
     }
+    h1 .accent { color: var(--leaf-deep); }
 
     .lead {
-      font-size: 1.05rem;
-      line-height: 1.6;
+      font-size: 1.02rem;
+      line-height: 1.65;
       color: var(--text-mid);
-      margin-bottom: 2.5rem;
+      margin-bottom: 36px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 500;
     }
 
     form {
       display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 380px;
+      margin: 0 auto;
     }
 
-    input[type="email"] {
-      flex: 1 1 240px;
-      padding: 0.9rem 1.1rem;
-      border: 1px solid rgba(0,0,0,0.12);
-      border-radius: 10px;
-      font-size: 1rem;
+    input[type="email"], form select {
+      width: 100%;
+      border: 1.5px solid var(--line);
       background: #fff;
+      padding: 13px 16px;
+      font-size: 1rem;
       color: var(--text-dark);
       font-family: inherit;
-      transition: border-color 0.15s;
-    }
-
-    input[type="email"]:focus {
-      outline: none;
-      border-color: var(--green-mid);
-    }
-
-    input[type="email"]:disabled {
-      background: #f5efe2;
-      cursor: not-allowed;
-    }
-
-    button {
-      padding: 0.9rem 1.5rem;
-      border: 0;
-      border-radius: 10px;
-      background: var(--green-dark);
-      color: #fff;
-      font-size: 1rem;
       font-weight: 500;
-      font-family: inherit;
+      border-radius: 8px;
+      transition: border-color .15s;
+      min-width: 0;
+    }
+    input[type="email"]:focus, form select:focus { outline: none; border-color: var(--leaf-deep); }
+    input[type="email"]::placeholder { color: var(--text-light); font-weight: 400; }
+    form select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8a8a' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 16px;
       cursor: pointer;
-      transition: background 0.15s, transform 0.05s;
+      padding-right: 40px;
+      color: var(--text-dark);
     }
+    form select:invalid { color: var(--text-light); font-weight: 400; }
 
-    button:hover:not(:disabled) { background: var(--green-mid); }
-    button:active:not(:disabled) { transform: scale(0.98); }
-
-    button:disabled {
-      background: #b8b0a0;
-      cursor: not-allowed;
+    button[type="submit"] {
+      width: 100%;
+      background: var(--leaf-deep);
+      color: #fff;
+      padding: 13px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: .96rem;
+      transition: background .15s, transform .05s;
+      margin-top: 4px;
     }
+    button[type="submit"]:hover { background: var(--leaf-darker); }
+    button[type="submit"]:active { transform: scale(.98); }
 
-    .form-note {
-      margin-top: 0.9rem;
-      font-size: 0.85rem;
+    .note {
+      margin-top: 18px;
+      font-size: .85rem;
       color: var(--text-light);
+      font-weight: 500;
     }
 
-    footer {
-      padding: 1.5rem;
+    /* ── Story + Phones ── */
+    .story-block {
+      width: 100%;
+      max-width: 1080px;
+      padding-top: 80px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 72px;
+    }
+
+    /* ── Phone mockups ── */
+    .phones-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .phone-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .phone-caption {
+      font-size: .78rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--leaf-deep);
+      font-weight: 700;
+    }
+    .phone {
+      width: 280px;
+      height: 580px;
+      background: #1a1a1a;
+      border-radius: 44px;
+      padding: 10px;
+      box-shadow:
+        0 24px 48px -12px rgba(20, 20, 20, .25),
+        0 0 0 1px rgba(20, 20, 20, .08);
+      position: relative;
+    }
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 18px; left: 50%;
+      transform: translateX(-50%);
+      width: 90px; height: 24px;
+      background: #1a1a1a;
+      border-radius: 14px;
+      z-index: 3;
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: var(--cream);
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .ph-statusbar {
+      padding: 14px 20px 0;
+      font-size: .68rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      letter-spacing: .04em;
+    }
+    .ph-statusbar-right {
+      display: inline-flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .ph-bar {
+      width: 4px; height: 6px; background: var(--text-dark); border-radius: 1px;
+    }
+    .ph-bar:nth-child(1) { opacity: .9; }
+    .ph-bar:nth-child(2) { opacity: .7; height: 5px; }
+    .ph-bar:nth-child(3) { opacity: .5; height: 4px; }
+    .ph-header {
+      padding: 24px 20px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .ph-logo {
+      height: 16px;
+      width: auto;
+      display: block;
+    }
+    .ph-search-icon {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--leaf-tint);
+      color: var(--leaf-deep);
+      display: grid; place-items: center;
+    }
+    .ph-search-icon svg { width: 13px; height: 13px; }
+    .ph-title {
+      padding: 0 20px;
+      margin-bottom: 16px;
+    }
+    .ph-title h4 {
+      font-weight: 800;
+      font-size: 1.32rem;
+      letter-spacing: -.02em;
+      color: var(--text-dark);
+      line-height: 1.15;
+    }
+    .ph-title span {
+      font-size: .72rem;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+    .ph-cart {
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+      flex: 1;
+    }
+    .ph-item {
+      background: #fff;
+      border-radius: 14px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      border: 1px solid var(--line-soft);
+    }
+    .ph-thumb {
+      width: 42px; height: 42px;
+      border-radius: 9px;
+      flex-shrink: 0;
+    }
+    .ph-thumb.olive  { background: linear-gradient(135deg, #c8db74, #6f8a30); }
+    .ph-thumb.honey  { background: linear-gradient(135deg, #f1c46a, #b97914); }
+    .ph-thumb.feta   { background: linear-gradient(135deg, #f5efe2, #c4b48a); }
+    .ph-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .ph-item-name {
+      font-weight: 700;
+      font-size: .8rem;
+      color: var(--text-dark);
+      letter-spacing: -.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ph-item-meta {
+      font-size: .68rem;
+      color: var(--text-light);
+      font-weight: 500;
+      margin-top: 1px;
+    }
+    .ph-item-price {
+      font-weight: 800;
+      font-size: .85rem;
+      color: var(--text-dark);
+    }
+    .ph-foot {
+      padding: 16px 20px 20px;
+      background: #fff;
+      border-top: 1px solid var(--line-soft);
+    }
+    .ph-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .ph-total-label {
+      font-size: .72rem;
+      color: var(--text-light);
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .ph-total-val {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      letter-spacing: -.02em;
+    }
+    .ph-cta {
+      background: var(--leaf-deep);
+      color: #fff;
+      padding: 11px;
+      border-radius: 10px;
       text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-light);
+      font-weight: 700;
+      font-size: .85rem;
     }
 
-    footer a {
-      color: var(--text-mid);
-      text-decoration: none;
-      margin: 0 0.5rem;
+    /* Adoption phone specifics */
+    .ph-back {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--leaf-tint);
+      color: var(--leaf-deep);
+      display: grid; place-items: center;
     }
-    footer a:hover { color: var(--green-dark); }
+    .ph-back svg { width: 14px; height: 14px; }
+    .ph-hero {
+      margin: 4px 16px 14px;
+      height: 200px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      background:
+        radial-gradient(circle at 30% 70%, #7d9c3a 0%, transparent 55%),
+        radial-gradient(circle at 75% 30%, #cfe88a 0%, transparent 55%),
+        linear-gradient(160deg, #5a7a30 0%, #a7c958 60%, #cfe88a 100%);
+    }
+    .ph-hero::after {
+      /* abstract tree silhouette */
+      content: "";
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 130px; height: 130px;
+      background:
+        radial-gradient(ellipse 60px 80px at 50% 30%, rgba(46, 64, 18, .55), transparent 70%),
+        radial-gradient(ellipse 38px 50px at 30% 45%, rgba(46, 64, 18, .35), transparent 70%),
+        radial-gradient(ellipse 38px 50px at 70% 45%, rgba(46, 64, 18, .35), transparent 70%);
+      filter: blur(2px);
+    }
+    .ph-tag {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: rgba(255,255,255,.95);
+      color: var(--leaf-deep);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+    .ph-adopt-body {
+      padding: 0 18px;
+      flex: 1;
+    }
+    .ph-adopt-eyebrow {
+      font-size: .62rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--leaf-deep);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .ph-adopt-name {
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -.02em;
+      color: var(--text-dark);
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+    .ph-adopt-where {
+      font-size: .72rem;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .ph-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .ph-stat {
+      background: #fff;
+      border: 1px solid var(--line-soft);
+      border-radius: 12px;
+      padding: 10px 6px;
+      text-align: center;
+    }
+    .ph-stat b {
+      display: block;
+      font-weight: 800;
+      font-size: .85rem;
+      color: var(--text-dark);
+      letter-spacing: -.01em;
+    }
+    .ph-stat span {
+      font-size: .56rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 700;
+    }
+
+    /* Producer storefront phone specifics */
+    .ph-icon-btn {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--leaf-tint);
+      color: var(--leaf-deep);
+      display: grid; place-items: center;
+    }
+    .ph-icon-btn svg { width: 14px; height: 14px; }
+    .ph-cover {
+      margin: 4px 16px 30px;
+      height: 76px;
+      border-radius: 14px;
+      position: relative;
+      background:
+        radial-gradient(circle at 75% 35%, #cfe88a 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,.18) 0%, transparent 50%),
+        linear-gradient(135deg, #5a7a30 0%, #a7c958 100%);
+    }
+    .ph-cover-avatar {
+      position: absolute;
+      bottom: -22px; left: 14px;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c8db74, #6f8a30);
+      border: 3px solid var(--cream);
+      box-shadow: 0 2px 8px rgba(20,20,20,.10);
+    }
+    .ph-cover-badge {
+      position: absolute;
+      top: 10px; right: 10px;
+      background: rgba(255,255,255,.95);
+      color: var(--leaf-deep);
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .ph-prod-info {
+      padding: 0 20px;
+      margin-bottom: 14px;
+    }
+    .ph-prod-name {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -.02em;
+      color: var(--text-dark);
+      line-height: 1.15;
+    }
+    .ph-prod-loc {
+      font-size: .72rem;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+    .ph-prod-divider {
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .ph-prod-divider::before, .ph-prod-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line-soft);
+    }
+    .ph-prod-divider span {
+      font-size: .58rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 700;
+    }
+    .ph-prod-list {
+      padding: 0 20px 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 8px;
+      flex: 1;
+    }
+    .ph-prod-row {
+      background: #fff;
+      border: 1px solid var(--line-soft);
+      border-radius: 12px;
+      padding: 9px 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ph-prod-row-info { flex: 1; min-width: 0; }
+    .ph-prod-row-name {
+      font-weight: 700;
+      font-size: .78rem;
+      color: var(--text-dark);
+      letter-spacing: -.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ph-prod-row-price {
+      font-weight: 800;
+      font-size: .72rem;
+      color: var(--text-dark);
+      margin-top: 2px;
+    }
+    .ph-add {
+      width: 26px; height: 26px;
+      border-radius: 8px;
+      background: #a7c958;
+      color: var(--text-dark);
+      display: grid; place-items: center;
+      font-weight: 800;
+      font-size: .95rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    /* ── Shared section head ── */
+    .block {
+      width: 100%;
+      padding-top: 80px;
+      border-top: 1px solid var(--line);
+    }
+    .block-head {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .block-eyebrow {
+      display: inline-block;
+      font-size: .76rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--leaf-deep);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .block-title {
+      font-weight: 800;
+      font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+      letter-spacing: -.025em;
+      color: var(--text-dark);
+      line-height: 1.15;
+      max-width: 720px;
+      margin: 0 auto;
+      text-wrap: balance;
+    }
+
+    /* ── Features grid ── */
+    .features { max-width: 1080px; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .feature {
+      padding: 28px 26px 30px;
+      background: #fff;
+      border: 1px solid var(--line-soft);
+      border-radius: 18px;
+      transition: border-color .2s, transform .2s;
+    }
+    .feature:hover { border-color: #a7c958; transform: translateY(-2px); }
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--leaf-tint);
+      color: var(--leaf-deep);
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+    }
+    .feature-icon svg { width: 20px; height: 20px; }
+    .feature-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+      letter-spacing: -.015em;
+    }
+    .feature-text {
+      font-size: .9rem;
+      color: var(--text-mid);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+    @media (max-width: 880px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } }
+
+    /* ── Advantages ── */
+    .advantages { max-width: 920px; }
+    .advantages-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-bottom: 64px;
+    }
+    .advantages-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 0;
+      border-top: 1px solid var(--line-soft);
+    }
+    .advantages-list li:nth-child(odd) { padding-right: 24px; }
+    .advantages-list li:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--line-soft); }
+    .adv-check {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--leaf-tint);
+      color: var(--leaf-deep);
+      display: grid; place-items: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .adv-check svg { width: 12px; height: 12px; }
+    .adv-text {
+      font-size: .96rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+    @media (max-width: 720px) {
+      .advantages-list { grid-template-columns: 1fr; }
+      .advantages-list li:nth-child(odd),
+      .advantages-list li:nth-child(even) { padding: 16px 0; border-left: 0; }
+    }
+
+    /* ── SDG pills ── */
+    .sdg-row {
+      padding-top: 36px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+    .sdg-label {
+      display: block;
+      font-size: .78rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+    .sdg-pills {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .sdg-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 1.5px solid #a7c958;
+      padding: 7px 14px 7px 7px;
+      border-radius: 999px;
+    }
+    .sdg-num {
+      background: var(--leaf-deep);
+      color: #fff;
+      min-width: 26px;
+      height: 26px;
+      padding: 0 6px;
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: .78rem;
+      letter-spacing: -.02em;
+    }
+    .sdg-text {
+      font-size: .84rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    @media (max-width: 880px) {
+      .story-block { padding-top: 56px; gap: 48px; }
+      .phones-row { gap: 24px; }
+      .phone { width: 260px; height: 540px; }
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 36px 28px;
+      text-align: center;
+      font-size: .82rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed;
+      bottom: 24px; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--text-dark);
+      color: #fff;
+      padding: 11px 20px;
+      border-radius: 8px;
+      font-size: .9rem;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s, transform .25s;
+      z-index: 100;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   </style>
 </head>
 <body>
+
   <main>
+    <!-- Hero card -->
     <div class="card">
-      <img src="assets/opson-logo.svg" alt="Opson" class="logo" />
-
-      <h1>Σύντομα κοντά σας</h1>
-
+      <img src="assets/opson.svg" alt="Opson" class="logo" />
+      <div class="eyebrow">Πρώιμη πρόσβαση</div>
+      <h1>Σύντομα <span class="accent">κοντά σου</span>.</h1>
       <p class="lead">
-        Η Opson είναι μια νέα αγορά για φρέσκα, τοπικά ελληνικά προϊόντα,
-        απευθείας από τους παραγωγούς στο τραπέζι σας.
+        Η Opson είναι μια νέα αγορά για φρέσκα, τοπικά ελληνικά προϊόντα —
+        απευθείας από τους παραγωγούς στο τραπέζι σου.
       </p>
 
       <form id="signup" novalidate>
-        <input
-          type="email"
-          name="email"
-          placeholder="Το email σας"
-          aria-label="Email"
-          disabled
-        />
-        <button type="submit" disabled>Ενημερώστε με</button>
+        <input type="email" name="email" placeholder="Το email σου" aria-label="Email" required />
+        <select name="role" aria-label="Ιδιότητα / Επάγγελμα" required>
+          <option value="" disabled selected>Ιδιότητα / Επάγγελμα</option>
+          <option value="consumer">Καταναλωτής / Καταναλώτρια</option>
+          <option value="producer">Παραγωγός</option>
+          <option value="hospitality">Επαγγελματίας εστίασης</option>
+          <option value="other">Άλλο</option>
+        </select>
+        <button type="submit">Ενημέρωσέ με</button>
       </form>
-      <p class="form-note">Η εγγραφή ανοίγει σύντομα.</p>
+      <p class="note">Σου στέλνουμε μήνυμα μόλις ανοίξουμε.</p>
     </div>
+
+    <!-- Λειτουργίες -->
+    <section class="block features" aria-label="Λειτουργίες">
+      <div class="block-head">
+        <div class="block-eyebrow">Λειτουργίες</div>
+        <h2 class="block-title">Τι θα μπορείς να κάνεις στην Opson</h2>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <div class="feature-title">Αναζήτηση προϊόντων</div>
+          <div class="feature-text">Φιλτράρισμα ανά κατηγορία, εποχή, πιστοποίηση ή διατροφική προτίμηση.</div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <div class="feature-title">Αναζήτηση παραγωγών</div>
+          <div class="feature-text">Βρες αγροκτήματα ανά περιοχή, καλλιέργεια ή πιστοποίηση.</div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+          </div>
+          <div class="feature-title">Παραγγελίες τροφίμων</div>
+          <div class="feature-text">Συνθέτεις καλάθι από πολλούς παραγωγούς με μία μόνο πληρωμή.</div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/>
+            </svg>
+          </div>
+          <div class="feature-title">Ανεξάρτητοι έλεγχοι</div>
+          <div class="feature-text">Πρόσβαση σε εκθέσεις ελέγχου τροφίμου, εδάφους και φύλλου ανά παραγωγό.</div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 4 3 9 8 9"/><line x1="12" y1="7" x2="12" y2="12"/><line x1="12" y1="12" x2="15" y2="14"/>
+            </svg>
+          </div>
+          <div class="feature-title">Ιστορικό Αγρού</div>
+          <div class="feature-text">Δες πότε φυτεύτηκε κάθε καλλιέργεια, τι ψεκάστηκε και τι σοδειά αναμένεται.</div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <div class="feature-title">Εγγύηση OPSON</div>
+          <div class="feature-text">Επιστροφή χρημάτων αν δεν είσαι ικανοποιημένος με την ποιότητα ή την προέλευση.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Phone mockups -->
+    <section class="story-block">
+      <div class="phones-row">
+
+        <!-- Phone 1: Cart -->
+        <div class="phone-wrap">
+          <div class="phone" role="img" aria-label="Καλάθι αγορών Opson">
+            <div class="phone-screen">
+              <div class="ph-statusbar">
+                <span>9:41</span>
+                <span class="ph-statusbar-right">
+                  <span class="ph-bar"></span><span class="ph-bar"></span><span class="ph-bar"></span>
+                </span>
+              </div>
+              <div class="ph-header">
+                <div style="width:28px"></div>
+                <img src="assets/opson.svg" alt="opson" class="ph-logo" />
+                <div class="ph-search-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+                    <circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.5" y2="16.5"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="ph-title">
+                <h4>Το καλάθι σου</h4>
+                <span>3 προϊόντα · 2 παραγωγοί</span>
+              </div>
+              <div class="ph-cart">
+                <div class="ph-item">
+                  <div class="ph-thumb olive"></div>
+                  <div class="ph-item-info">
+                    <div class="ph-item-name">Ελαιόλαδο Χαλκιά</div>
+                    <div class="ph-item-meta">2 × 500ml · Σητεία</div>
+                  </div>
+                  <div class="ph-item-price">€17,00</div>
+                </div>
+                <div class="ph-item">
+                  <div class="ph-thumb feta"></div>
+                  <div class="ph-item-info">
+                    <div class="ph-item-name">Φέτα ΠΟΠ Σφακιανάκη</div>
+                    <div class="ph-item-meta">400γρ · Ζαγόρι</div>
+                  </div>
+                  <div class="ph-item-price">€8,50</div>
+                </div>
+                <div class="ph-item">
+                  <div class="ph-thumb honey"></div>
+                  <div class="ph-item-info">
+                    <div class="ph-item-name">Μέλι θυμαριού</div>
+                    <div class="ph-item-meta">450γρ · Όλυμπος</div>
+                  </div>
+                  <div class="ph-item-price">€11,50</div>
+                </div>
+              </div>
+              <div class="ph-foot">
+                <div class="ph-total">
+                  <span class="ph-total-label">Σύνολο</span>
+                  <span class="ph-total-val">€37,00</span>
+                </div>
+                <div class="ph-cta">Ολοκλήρωση παραγγελίας</div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-caption">Παραγγελία</div>
+        </div>
+
+        <!-- Phone 2: Adopt-a-tree -->
+        <div class="phone-wrap">
+          <div class="phone" role="img" aria-label="Υιοθεσία δέντρου Opson">
+            <div class="phone-screen">
+              <div class="ph-statusbar">
+                <span>9:41</span>
+                <span class="ph-statusbar-right">
+                  <span class="ph-bar"></span><span class="ph-bar"></span><span class="ph-bar"></span>
+                </span>
+              </div>
+              <div class="ph-header">
+                <div class="ph-back" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                  </svg>
+                </div>
+                <img src="assets/opson.svg" alt="opson" class="ph-logo" />
+                <div style="width:28px"></div>
+              </div>
+              <div class="ph-hero" aria-hidden="true">
+                <span class="ph-tag">Διαθέσιμη</span>
+              </div>
+              <div class="ph-adopt-body">
+                <div class="ph-adopt-eyebrow">Υιοθεσία δέντρου</div>
+                <div class="ph-adopt-name">Ελιά Κορωνέικη #142</div>
+                <div class="ph-adopt-where">Ελαιώνας Χαλκιά · Σητεία, Κρήτη</div>
+                <div class="ph-stats">
+                  <div class="ph-stat"><b>2018</b><span>Φύτευση</span></div>
+                  <div class="ph-stat"><b>~8L</b><span>Λάδι/έτος</span></div>
+                  <div class="ph-stat"><b>450μ</b><span>Υψόμετρο</span></div>
+                </div>
+              </div>
+              <div class="ph-foot">
+                <div class="ph-total">
+                  <span class="ph-total-label">Συνδρομή</span>
+                  <span class="ph-total-val">€120/έτος</span>
+                </div>
+                <div class="ph-cta">Υιοθέτησέ τη</div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-caption">Υιοθεσία δέντρου</div>
+        </div>
+
+        <!-- Phone 3: Producer storefront -->
+        <div class="phone-wrap">
+          <div class="phone" role="img" aria-label="Σελίδα παραγωγού Opson">
+            <div class="phone-screen">
+              <div class="ph-statusbar">
+                <span>9:41</span>
+                <span class="ph-statusbar-right">
+                  <span class="ph-bar"></span><span class="ph-bar"></span><span class="ph-bar"></span>
+                </span>
+              </div>
+              <div class="ph-header">
+                <div class="ph-back" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                  </svg>
+                </div>
+                <img src="assets/opson.svg" alt="opson" class="ph-logo" />
+                <div class="ph-icon-btn" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l8.84 8.84 8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="ph-cover" aria-hidden="true">
+                <span class="ph-cover-badge">ΠΟΠ</span>
+                <div class="ph-cover-avatar"></div>
+              </div>
+              <div class="ph-prod-info">
+                <div class="ph-prod-name">Ελαιώνας Χαλκιά</div>
+                <div class="ph-prod-loc">Σητεία, Κρήτη · 850 δέντρα</div>
+              </div>
+              <div class="ph-prod-divider"><span>Προϊόντα · 5</span></div>
+              <div class="ph-prod-list">
+                <div class="ph-prod-row">
+                  <div class="ph-thumb olive"></div>
+                  <div class="ph-prod-row-info">
+                    <div class="ph-prod-row-name">Extra παρθένο 500ml</div>
+                    <div class="ph-prod-row-price">€8,50</div>
+                  </div>
+                  <div class="ph-add" aria-hidden="true">+</div>
+                </div>
+                <div class="ph-prod-row">
+                  <div class="ph-thumb olive"></div>
+                  <div class="ph-prod-row-info">
+                    <div class="ph-prod-row-name">Extra παρθένο 1L</div>
+                    <div class="ph-prod-row-price">€15,00</div>
+                  </div>
+                  <div class="ph-add" aria-hidden="true">+</div>
+                </div>
+                <div class="ph-prod-row">
+                  <div class="ph-thumb feta"></div>
+                  <div class="ph-prod-row-info">
+                    <div class="ph-prod-row-name">Ελιές Καλαμών 350γρ</div>
+                    <div class="ph-prod-row-price">€6,00</div>
+                  </div>
+                  <div class="ph-add" aria-hidden="true">+</div>
+                </div>
+                <div class="ph-prod-row">
+                  <div class="ph-thumb honey"></div>
+                  <div class="ph-prod-row-info">
+                    <div class="ph-prod-row-name">Πάστα ελιάς 200γρ</div>
+                    <div class="ph-prod-row-price">€5,50</div>
+                  </div>
+                  <div class="ph-add" aria-hidden="true">+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-caption">Σελίδα παραγωγού</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Πλεονεκτήματα + SDGs -->
+    <section class="block advantages" aria-label="Πλεονεκτήματα">
+      <div class="block-head">
+        <div class="block-eyebrow">Γιατί Opson</div>
+        <h2 class="block-title">Πλεονεκτήματα για όλη την αλυσίδα</h2>
+      </div>
+
+      <ul class="advantages-list">
+        <li>
+          <span class="adv-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 8"/></svg>
+          </span>
+          <span class="adv-text">Σύνδεση πιστοποιημένων παραγωγών με καταναλωτές</span>
+        </li>
+        <li>
+          <span class="adv-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 8"/></svg>
+          </span>
+          <span class="adv-text">Διαφάνεια σε όλη την αλυσίδα τροφίμου</span>
+        </li>
+        <li>
+          <span class="adv-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 8"/></svg>
+          </span>
+          <span class="adv-text">Ανεξάρτητοι έλεγχοι στα τρόφιμα, στο έδαφος και στο φύλλο</span>
+        </li>
+        <li>
+          <span class="adv-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 8"/></svg>
+          </span>
+          <span class="adv-text">Αύξηση εισοδήματος των παραγωγών</span>
+        </li>
+        <li>
+          <span class="adv-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 10 17 19 8"/></svg>
+          </span>
+          <span class="adv-text">Υποστήριξη της ζωής στην επαρχία</span>
+        </li>
+      </ul>
+
+      <div class="sdg-row">
+        <span class="sdg-label">Συμμετοχή στους στόχους ESG του ΟΗΕ</span>
+        <div class="sdg-pills">
+          <span class="sdg-pill"><span class="sdg-num">2</span><span class="sdg-text">Βιώσιμη Γεωργία</span></span>
+          <span class="sdg-pill"><span class="sdg-num">8</span><span class="sdg-text">Αξιοπρεπής Εργασία</span></span>
+          <span class="sdg-pill"><span class="sdg-num">10</span><span class="sdg-text">Μείωση Ανισοτήτων</span></span>
+          <span class="sdg-pill"><span class="sdg-num">12</span><span class="sdg-text">Υπεύθυνη Κατανάλωση</span></span>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <span>© <span id="year"></span> Opson</span>
+    © <span id="year"></span> Opson
   </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    document.getElementById('signup').addEventListener('submit', e => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const emailInput = form.querySelector('input[name="email"]');
+      const roleSelect = form.querySelector('select[name="role"]');
+      const email = emailInput.value.trim();
+      const role = roleSelect.value;
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showToast('Δώσε ένα έγκυρο email.');
+        return;
+      }
+      if (!role) {
+        showToast('Επίλεξε την ιδιότητά σου.');
+        return;
+      }
+      emailInput.value = '';
+      roleSelect.selectedIndex = 0;
+      showToast('Είσαι στη λίστα. Θα σου στείλουμε μήνυμα μόλις ανοίξουμε.');
+    });
   </script>
 </body>
 </html>
