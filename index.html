@@ -791,6 +791,10 @@
       </p>
 
       <form id="signup" novalidate>
+        <input type="hidden" name="access_key" value="35148cf3-468b-4d6c-94bd-a2d1d978dff4" />
+        <input type="hidden" name="subject" value="Νέα εγγραφή στη λίστα Opson" />
+        <input type="hidden" name="from_name" value="Opson Landing" />
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
         <input type="email" name="email" placeholder="Το email σου" aria-label="Email" required />
         <select name="role" aria-label="Ιδιότητα / Επάγγελμα" required>
           <option value="" disabled selected>Ιδιότητα / Επάγγελμα</option>
@@ -1129,11 +1133,12 @@
       toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
     }
 
-    document.getElementById('signup').addEventListener('submit', e => {
+    document.getElementById('signup').addEventListener('submit', async e => {
       e.preventDefault();
       const form = e.currentTarget;
       const emailInput = form.querySelector('input[name="email"]');
       const roleSelect = form.querySelector('select[name="role"]');
+      const submitBtn = form.querySelector('button[type="submit"]');
       const email = emailInput.value.trim();
       const role = roleSelect.value;
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -1144,9 +1149,31 @@
         showToast('Επίλεξε την ιδιότητά σου.');
         return;
       }
-      emailInput.value = '';
-      roleSelect.selectedIndex = 0;
-      showToast('Είσαι στη λίστα. Θα σου στείλουμε μήνυμα μόλις ανοίξουμε.');
+
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Αποστολή…';
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form)))
+        });
+        const data = await response.json();
+        if (data.success) {
+          emailInput.value = '';
+          roleSelect.selectedIndex = 0;
+          showToast('Είσαι στη λίστα. Θα σου στείλουμε μήνυμα μόλις ανοίξουμε.');
+        } else {
+          showToast('Κάτι πήγε στραβά. Δοκίμασε ξανά.');
+        }
+      } catch (err) {
+        showToast('Πρόβλημα σύνδεσης. Δοκίμασε ξανά.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
     });
   </script>
 </body>
