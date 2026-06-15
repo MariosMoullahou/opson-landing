@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Opson — Σύντομα κοντά σου</title>
-  <meta name="description" content="Η Opson είναι μια νέα αγορά για φρέσκα, τοπικά ελληνικά προϊόντα — απευθείας από τους παραγωγούς." />
-  <meta property="og:title" content="Opson" />
+  <title>OPSON — Σύντομα κοντά σου</title>
+  <meta name="description" content="Η OPSON είναι μια νέα αγορά για φρέσκα, τοπικά ελληνικά προϊόντα — απευθείας από τους παραγωγούς." />
+  <meta property="og:title" content="OPSON" />
   <meta property="og:description" content="Φρέσκα, τοπικά ελληνικά προϊόντα απευθείας από τους παραγωγούς." />
   <meta property="og:type" content="website" />
-  <link rel="icon" type="image/svg+xml" href="assets/opson.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/o_noborder.svg" />
   <link rel="apple-touch-icon" href="assets/o.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -927,38 +927,22 @@
       font-weight: 700;
       margin-bottom: 22px;
     }
-    .sdg-pills {
+    .sdg-icons {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 14px;
       flex-wrap: wrap;
     }
-    .sdg-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #fff;
-      border: 1.5px solid #a7c958;
-      padding: 7px 14px 7px 7px;
-      border-radius: 999px;
+    .sdg-icons img {
+      width: 96px;
+      height: 96px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px -4px rgba(20, 20, 20, .18);
+      transition: transform .2s;
     }
-    .sdg-num {
-      background: var(--leaf-deep);
-      color: #fff;
-      min-width: 26px;
-      height: 26px;
-      padding: 0 6px;
-      border-radius: 7px;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: .78rem;
-      letter-spacing: -.02em;
-    }
-    .sdg-text {
-      font-size: .84rem;
-      font-weight: 600;
-      color: var(--text-dark);
+    .sdg-icons img:hover { transform: translateY(-3px); }
+    @media (max-width: 480px) {
+      .sdg-icons img { width: 76px; height: 76px; }
     }
 
     @media (max-width: 880px) {
@@ -1003,7 +987,7 @@
       <img src="assets/opson.svg" alt="Opson" class="logo" />
       <h1>Σύντομα <span class="accent">κοντά σας</span>.</h1>
       <p class="lead">
-        Η Opson είναι μια νέα πλατφόρμα που φέρνει διαφάνεια, εμπιστοσύνη και ποιότητα από τον παραγωγό στο&nbsp;τραπέζι&nbsp;σας.
+        Η OPSON είναι μια νέα πλατφόρμα που φέρνει διαφάνεια, εμπιστοσύνη και ποιότητα από τον παραγωγό στο&nbsp;τραπέζι&nbsp;σας.
       </p>
 
       <form id="signup" novalidate>
@@ -1028,7 +1012,7 @@
     <section class="block features" aria-label="Λειτουργίες">
       <div class="block-head">
         <div class="block-eyebrow">Λειτουργίες</div>
-        <h2 class="block-title">Τι θα μπορείς να κάνεις στην Opson</h2>
+        <h2 class="block-title">Τι θα μπορείς να κάνεις στην OPSON</h2>
       </div>
 
       <div class="features-grid">
@@ -1050,7 +1034,7 @@
             </svg>
           </div>
           <div class="feature-title">Αναζήτηση παραγωγών</div>
-          <div class="feature-text">Βρες αγροκτήματα ανά περιοχή, καλλιέργεια ή πιστοποίηση.</div>
+          <div class="feature-text">Εξερεύνηση αγροκτήματος ανά περιοχή, καλλιέργεια ή πιστοποίηση.</div>
         </div>
 
         <div class="feature">
@@ -1060,7 +1044,7 @@
             </svg>
           </div>
           <div class="feature-title">Παραγγελίες τροφίμων</div>
-          <div class="feature-text">Συνθέτεις καλάθι από πολλούς παραγωγούς με μία μόνο πληρωμή.</div>
+          <div class="feature-text">Σύνθεση καλαθιού από πολλούς παραγωγούς με μία μόνο πληρωμή.</div>
         </div>
 
         <div class="feature">
@@ -1080,7 +1064,7 @@
             </svg>
           </div>
           <div class="feature-title">Ιστορικό Αγρού</div>
-          <div class="feature-text">Δες πότε φυτεύτηκε κάθε καλλιέργεια, τι ψεκάστηκε και τι σοδειά αναμένεται.</div>
+          <div class="feature-text">Ενημέρωση για την ημερομηνία φύτευσης, τις καλλιεργητικές πρακτικές και την αναμενόμενη σοδειά.</div>
         </div>
 
         <div class="feature">
@@ -1090,11 +1074,22 @@
             </svg>
           </div>
           <div class="feature-title">Εγγύηση OPSON</div>
-          <div class="feature-text">Επιστροφή χρημάτων αν δεν είσαι ικανοποιημένος με την ποιότητα ή την προέλευση.</div>
+          <div class="feature-text">Εγγυημένη επιστροφή χρημάτων για ζητήματα ποιότητας ή προέλευσης.</div>
         </div>
 
       </div>
     </section>
+
+    <!-- Στόχοι ΟΗΕ -->
+    <div class="sdg-row" style="width:100%; max-width:1080px;">
+      <span class="sdg-label">Συμμετοχή στους στόχους ESG του ΟΗΕ</span>
+      <div class="sdg-icons">
+        <img src="assets/2_zero_hunger.png" alt="SDG 2 — Μηδενική Πείνα" />
+        <img src="assets/8_growth.png" alt="SDG 8 — Αξιοπρεπής Εργασία και Οικονομική Ανάπτυξη" />
+        <img src="assets/10_equality.png" alt="SDG 10 — Μείωση Ανισοτήτων" />
+        <img src="assets/12_consumption.png" alt="SDG 12 — Υπεύθυνη Κατανάλωση" />
+      </div>
+    </div>
 
     <!-- Phone mockups -->
     <section class="story-block">
@@ -1283,16 +1278,9 @@
     <section class="reels-section" aria-label="Reels παραγωγών">
       <div class="reels-copy">
         <div class="block-eyebrow">Reels παραγωγών</div>
-        <h2>Γνώρισε τον παραγωγό σου, όχι μόνο το προϊόν του.</h2>
-        <p>
-          Σύντομα κάθετα βίντεο, απευθείας από το χωράφι. Δες τη συγκομιδή την ώρα που γίνεται,
-          μπες στον ελαιώνα, στο μελισσοκομείο, στο τυροκομείο — και αγόρασε με μια κίνηση από εκεί.
-        </p>
-        <ul class="reels-bullets">
-          <li><span class="dot" aria-hidden="true"></span><span>Επαληθευμένοι παραγωγοί — όχι influencers</span></li>
-          <li><span class="dot" aria-hidden="true"></span><span>Δες πώς, πού και πότε παράγεται το προϊόν</span></li>
-          <li><span class="dot" aria-hidden="true"></span><span>Από το reel στο καλάθι με ένα tap</span></li>
-        </ul>
+        <h2>Γνώρισε τον παραγωγό.</h2>
+        <p>Shorts videos που σε φέρνουν κοντά στους ανθρώπους πίσω από το φαγητό σου.</p>
+        <p>Κατευθείαν από την πηγή στο καλάθι σου.</p>
       </div>
 
       <div class="phone-wrap">
@@ -1359,7 +1347,7 @@
     <!-- Πλεονεκτήματα + SDGs -->
     <section class="block advantages" aria-label="Πλεονεκτήματα">
       <div class="block-head">
-        <div class="block-eyebrow">Γιατί Opson</div>
+        <div class="block-eyebrow">Γιατί OPSON</div>
         <h2 class="block-title">Πλεονεκτήματα για όλη την αλυσίδα</h2>
       </div>
 
@@ -1372,7 +1360,7 @@
             </svg>
           </div>
           <div class="adv-title">Σύνδεση παραγωγών</div>
-          <div class="adv-desc">Συνδέουμε πιστοποιημένους Έλληνες παραγωγούς απευθείας με τους καταναλωτές, χωρίς μεσάζοντες.</div>
+          <div class="adv-desc">Απευθείας με τους καταναλωτές, χωρίς μεσάζοντες.</div>
         </div>
 
         <div class="advantage">
@@ -1382,7 +1370,7 @@
             </svg>
           </div>
           <div class="adv-title">Διαφάνεια αλυσίδας</div>
-          <div class="adv-desc">Δες ολόκληρη τη διαδρομή του τροφίμου, από το χωράφι μέχρι το τραπέζι σου.</div>
+          <div class="adv-desc">Πλήρης ιχνηλασιμότητα, από το χωράφι στο τραπέζι σου.</div>
         </div>
 
         <div class="advantage">
@@ -1402,7 +1390,7 @@
             </svg>
           </div>
           <div class="adv-title">Αύξηση εισοδήματος</div>
-          <div class="adv-desc">Με λιγότερους μεσάζοντες, οι παραγωγοί κρατούν περισσότερα από κάθε πώληση.</div>
+          <div class="adv-desc">Μείωση μεσαζόντων, ενίσχυση εισοδήματος παραγωγών.</div>
         </div>
 
         <div class="advantage">
@@ -1412,25 +1400,15 @@
             </svg>
           </div>
           <div class="adv-title">Ζωή στην επαρχία</div>
-          <div class="adv-desc">Στηρίζουμε τις τοπικές κοινότητες και τη βιώσιμη ανάπτυξη της ελληνικής υπαίθρου.</div>
+          <div class="adv-desc">Ενίσχυση τοπικών κοινοτήτων και βιώσιμης ανάπτυξης της ελληνικής υπαίθρου.</div>
         </div>
 
-      </div>
-
-      <div class="sdg-row">
-        <span class="sdg-label">Συμμετοχή στους στόχους ESG του ΟΗΕ</span>
-        <div class="sdg-pills">
-          <span class="sdg-pill"><span class="sdg-num">2</span><span class="sdg-text">Βιώσιμη Γεωργία</span></span>
-          <span class="sdg-pill"><span class="sdg-num">8</span><span class="sdg-text">Αξιοπρεπής Εργασία</span></span>
-          <span class="sdg-pill"><span class="sdg-num">10</span><span class="sdg-text">Μείωση Ανισοτήτων</span></span>
-          <span class="sdg-pill"><span class="sdg-num">12</span><span class="sdg-text">Υπεύθυνη Κατανάλωση</span></span>
-        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    © <span id="year"></span> Opson
+    © <span id="year"></span> OPSON
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
