@@ -927,6 +927,15 @@
       font-weight: 700;
       margin-bottom: 22px;
     }
+    .sdg-header {
+      height: auto;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto 32px;
+    }
+    @media (max-width: 480px) {
+      .sdg-header { max-width: 90%; }
+    }
     .sdg-icons {
       display: flex;
       justify-content: center;
@@ -934,15 +943,15 @@
       flex-wrap: wrap;
     }
     .sdg-icons img {
-      width: 96px;
-      height: 96px;
+      width: 132px;
+      height: 132px;
       border-radius: 8px;
       box-shadow: 0 4px 12px -4px rgba(20, 20, 20, .18);
       transition: transform .2s;
     }
     .sdg-icons img:hover { transform: translateY(-3px); }
     @media (max-width: 480px) {
-      .sdg-icons img { width: 76px; height: 76px; }
+      .sdg-icons img { width: 100px; height: 100px; }
     }
 
     @media (max-width: 880px) {
@@ -1082,12 +1091,12 @@
 
     <!-- Στόχοι ΟΗΕ -->
     <div class="sdg-row" style="width:100%; max-width:1080px;">
-      <span class="sdg-label">Συμμετοχή στους στόχους ESG του ΟΗΕ</span>
+      <img src="assets/sdg-header.png" alt="Στόχοι Βιώσιμης Ανάπτυξης" class="sdg-header" />
       <div class="sdg-icons">
-        <img src="assets/2_zero_hunger.png" alt="SDG 2 — Μηδενική Πείνα" />
-        <img src="assets/8_growth.png" alt="SDG 8 — Αξιοπρεπής Εργασία και Οικονομική Ανάπτυξη" />
-        <img src="assets/10_equality.png" alt="SDG 10 — Μείωση Ανισοτήτων" />
-        <img src="assets/12_consumption.png" alt="SDG 12 — Υπεύθυνη Κατανάλωση" />
+        <img src="assets/SDG-icon-GR_RGB-02.jpg" alt="SDG 2 — Μηδενική Πείνα" />
+        <img src="assets/SDG-icon-GR_RGB-08.jpg" alt="SDG 8 — Αξιοπρεπής Εργασία και Οικονομική Ανάπτυξη" />
+        <img src="assets/SDG-icon-GR-RGB-10.jpg" alt="SDG 10 — Μείωση Ανισοτήτων" />
+        <img src="assets/SDG-icon-GR_RGB-12.jpg" alt="SDG 12 — Υπεύθυνη Κατανάλωση" />
       </div>
     </div>
 
